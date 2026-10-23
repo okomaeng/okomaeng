@@ -7,6 +7,23 @@
 (function () {
   var form = document.getElementById('lead-form');
   var modal = document.getElementById('privacy-modal');
+  var slides = document.querySelectorAll('[data-hero-slider] .hero-slide');
+  var sliderTimer = null;
+  var currentSlide = 0;
+
+  function showNextSlide() {
+    slides[currentSlide].classList.remove('is-active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('is-active');
+  }
+
+  if (slides.length > 1) {
+    sliderTimer = window.setInterval(showNextSlide, 3000);
+    window.addEventListener('pagehide', function () {
+      window.clearInterval(sliderTimer);
+      sliderTimer = null;
+    }, { once: true });
+  }
   if (!modal) return;
   var agree = document.getElementById('privacy-agree');
   var ok = document.getElementById('privacy-ok');
