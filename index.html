@@ -26,22 +26,29 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 /* 메뉴 버튼 */
 .menu-btn{position:fixed;top:0;right:0;z-index:30;width:100px;height:54px;background:var(--pt);color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px}
 /* 메인 비주얼 */
-.mv{position:relative;height:810px;overflow:hidden}
+.mv{position:relative;height:810px;overflow:hidden;background:#2d2a27;isolation:isolate}
+.hero-slider,.hero-slide{position:absolute;inset:0;width:100%;height:100%}
+.hero-slider{z-index:-2}
+.hero-slider::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,.08) 65%);z-index:2;pointer-events:none}
+.hero-slide{object-fit:cover;object-position:center 52%;opacity:0;transition:opacity 1.1s ease}
+.hero-slide.is-active{opacity:1}
 .mv .ph{background:#2d2a27;color:#aaa}
 .mv .logo{position:absolute;left:60px;top:60px;writing-mode:vertical-rl;font-size:64px;font-weight:900;color:#fff;letter-spacing:.1em;line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,.4)}
 .mv .logo small{font-size:16px;letter-spacing:.3em;font-weight:700}
 .mv .catch{position:absolute;left:180px;bottom:160px;color:#fff;max-width:560px}
 .mv .catch h1{font-size:40px;line-height:1.4;font-weight:800;margin:0 0 14px;text-shadow:0 2px 20px rgba(0,0,0,.4)}
 .mv .catch p{margin:0;font-size:16px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
-.mv .scroll{position:absolute;right:40px;bottom:40px;color:#fff;font-size:13px;writing-mode:vertical-rl}
-.bnr{position:absolute;left:0;bottom:-14px;width:284px;height:104px;background:var(--cream);display:flex;align-items:center;gap:14px;padding:0 18px;z-index:3;box-shadow:0 4px 18px rgba(0,0,0,.12)}
-.bnr i{width:70px;height:70px;flex:none}
+.bnr{position:absolute;left:0;bottom:-14px;width:284px;height:104px;background:#fff;display:flex;align-items:center;gap:14px;padding:0 18px;z-index:3;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.bnr .brand-image{width:74px;height:74px;flex:none;padding:7px;background:#fff;display:flex;align-items:center;justify-content:center}
+.bnr .brand-image img{width:100%;height:100%;object-fit:contain}
 .bnr b{font-size:18px;display:block;line-height:1.3}
 .bnr small{font-size:12.6px}
 /* 추천 메뉴 */
 .rec{background:var(--gray1);padding:90px 0 70px}
 .slide{position:relative;background:#fff;display:grid;grid-template-columns:400px 1fr;gap:30px;padding:30px;margin:0 60px}
 .slide .img{height:300px}
+.slide .menu-photo{display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#665b50 0,#3b3733 45%,#211f1d 100%)}
+.slide .menu-photo img{width:90%;height:90%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(0,0,0,.42))}
 .slide h3{font-size:21.6px;font-weight:700;margin:6px 0 16px;line-height:1.5}
 .slide dl{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;margin:0 0 16px;font-size:12.6px}
 .slide dt{background:var(--gray2);padding:0 10px}
@@ -51,8 +58,14 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 .dots{display:flex;gap:10px;justify-content:center;margin-top:24px}
 .dots i{width:6px;height:6px;border-radius:50%;background:#C9C1C1}.dots i:first-child{background:var(--pt)}
 /* 사진 위 흰 상자 */
-.shop{position:relative;height:600px}
-.shop .box{position:absolute;left:0;top:60px;background:#fff;padding:50px 60px 60px;width:440px}
+.shop{position:relative;min-height:650px;background:#1f1c1a;overflow:hidden}
+.shop-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,32%);min-height:650px}
+.store-photo{width:100%;height:100%;min-height:650px;object-fit:cover;object-position:center}
+.store-map{position:relative;display:block;min-height:650px;background:#ece7df;color:#fff;overflow:hidden;border-left:8px solid #fff}
+.store-map iframe{width:100%;height:100%;min-height:650px;border:0;display:block;background:#ece7df}
+.store-map span{position:absolute;right:14px;bottom:14px;padding:8px 12px;border-radius:6px;background:rgba(15,89,100,.92);font-size:12px;color:#fff}
+.shop .box{position:absolute;left:max(20px,calc((100vw - 1100px)/2));top:60px;background:rgba(255,255,255,.96);padding:46px 54px 52px;width:min(440px,calc(100% - 40px));z-index:2;box-shadow:0 16px 40px rgba(0,0,0,.18)}
+.shop .box p{margin:0 0 24px;font-size:15px;line-height:1.9}
 /* 메뉴: 회색 띠 위 흰 상자 */
 .menu{background:var(--gray3);padding:40px 0 60px;margin-top:120px}
 .menu .card{background:#fff;display:grid;grid-template-columns:1fr 1.4fr;gap:40px;padding:0 40px 40px 60px;margin-top:-60px}
@@ -93,15 +106,15 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 .ft .big a{font-size:21.6px;font-weight:700}
 .ft p{margin:0;color:#666}
 @media (max-width:860px){
-  .mv{height:600px}.mv .logo{left:20px;top:30px;font-size:40px}.mv .catch{left:20px;right:20px;bottom:130px}.mv .catch h1{font-size:26px}
+  .mv{height:620px}.hero-slide{object-position:center center}.mv .logo{left:20px;top:30px;font-size:40px}.mv .catch{left:20px;right:20px;bottom:130px}.mv .catch h1{font-size:26px}
   h2.t{font-size:26px}
   .slide{grid-template-columns:1fr;margin:0;padding:18px}.slide .img{height:200px}.arr{display:none}
-  .shop .box{left:16px;right:16px;width:auto;padding:30px}
-  .menu .card{grid-template-columns:1fr;padding:30px 20px}.menu .card .txt{padding-top:0}.menu .card .img{height:240px;margin:0}
-  .about{grid-template-columns:1fr}.about .img{height:260px}.about .txt{padding:40px 20px}
-  .news li{flex-wrap:wrap;gap:8px}.svc .grid{grid-template-columns:1fr 1fr}.svc .grid .img{height:120px}
+  .shop,.shop-media{min-height:0}.shop-media{grid-template-columns:1fr}.store-photo{min-height:360px;height:52vw}.store-map{min-height:260px;border-left:0;border-top:8px solid #fff}.store-map iframe{min-height:260px;height:260px}
+  .shop .box{position:relative;left:auto;top:auto;margin:-44px 16px 28px;width:auto;padding:30px;box-shadow:0 12px 30px rgba(0,0,0,.2)}
+  .news li{flex-wrap:wrap;gap:8px}
   .apply .wrap{grid-template-columns:1fr;gap:20px}.ft .big{flex-wrap:wrap;gap:20px}
 }
+@media (prefers-reduced-motion:reduce){.hero-slide{transition-duration:.15s}}
 </style>
 <!-- GA4 (Day 34에 여기에 붙이기) -->
 <!-- Meta Pixel (Day 35에 여기에 붙이기) -->
@@ -111,23 +124,25 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 <body>
 <a class="menu-btn" href="#apply" id="cta-top">≡ 오픈 알림</a>
 <main>
-<section class="mv">
-  <div class="ph "><span><span class="todo">히어로: 감자채 단면 컷 또는 15초 영상 스틸</span></span></div>
+<section class="mv" aria-label="오코맹 대표 이미지">
+  <div class="hero-slider" data-hero-slider>
+    <img class="hero-slide is-active" src="assets/hero-banner-1.png" alt="철판에서 조리하는 오코맹 오코노미야끼">
+    <img class="hero-slide" src="assets/hero-banner-2.png" alt="오코맹의 바삭한 감자채 오코노미야끼">
+  </div>
   <div class="logo">오코맹<br><small>OKOMAENG · HYEHWA</small></div>
   <div class="catch"><h1>바삭한 바다 한 판을 바란 건,<br>당신 잘못이 아니에요.</h1><p>부드럽기만 할 거라는 예상, 싹 틀렸습니다. 감자채를 따로 구워 첫입의 바삭함을 더했어요.</p></div>
-  <span class="scroll">Scroll</span>
-  <a class="bnr" href="#apply" id="cta-main"><i><div class="ph "><span>메뉴 컷</span></div></i><span><small>오픈 소식 먼저 받기</small><b>오픈 알림 받기</b></span></a>
+  <a class="bnr" href="#apply" id="cta-main"><i class="brand-image"><img src="assets/okomaeng-brand.png" alt="오코맹 브랜드 로고"></i><span><small>오픈 소식 먼저 받기</small><b>오픈 알림 받기</b></span></a>
 </section>
 
-<section class="rec">
+<section class="rec" id="recommend">
   <div class="in">
     <span class="eb">Recommend</span><h2 class="t">추천 · 대표 메뉴</h2>
     <div class="slide">
-      <div class="img"><div class="ph "><span><span class="todo">감자채 단면 컷</span></span></div></div>
+      <div class="img menu-photo"><img src="assets/seafood-okonomiyaki.png" alt="감자채 해물 오코노미야끼"></div>
       <div>
         <h3>감자채 해물 오코노미야끼</h3>
-        <dl><dt>판매</dt><dd>오픈일부터</dd><dt>매장</dt><dd>혜화점</dd><dt>가격</dt><dd><span class="todo">가격</span></dd></dl>
-        <p>감자채를 따로 구워 올려 첫입부터 바삭합니다. 새우 2마리, 가리비 2개.</p>
+        <dl><dt>판매</dt><dd>오픈일부터</dd><dt>매장</dt><dd>혜화점</dd><dt>가격</dt><dd>18,000원</dd></dl>
+        <p>감자채를 따로 구워 올려 첫입부터 바삭합니다. 바다향이 진한 소스까지.</p>
       </div>
       <span class="arr l" aria-hidden="true">‹</span><span class="arr r" aria-hidden="true">›</span>
     </div>
@@ -135,31 +150,20 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
   </div>
 </section>
 
-<section class="shop">
-  <div class="ph "><span><span class="todo">매장 철판 사진</span></span></div>
-  <div class="box"><span class="eb">Shop</span><h2 class="t">매장 정보</h2><p><span class="todo">매장 주소·영업시간</span></p><a class="btn" href="#apply">오픈 알림 받기</a></div>
-</section>
-
-<section class="menu" id="menu">
-  <div class="in"><div class="card">
-    <div class="txt">
-      <span class="eb">Menu</span><h2 class="t">대표 메뉴</h2>
-      <table><tr><td>감자채 해물 오코노미야끼</td><td><span class="todo">가격</span></td></tr><tr><td>야끼소바</td><td><span class="todo">가격</span></td></tr><tr><td>돈페이야끼</td><td><span class="todo">가격</span></td></tr></table>
-      <a class="btn" href="#apply">메뉴 보기</a>
-    </div>
-    <div class="img"><div class="ph "><span><span class="todo">철판 위 오코노미야끼 컷</span></span></div></div>
-  </div><div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
-</section>
-
-<section class="about">
-  <div class="img"><div class="ph "><span><span class="todo">감자채 굽는 장면</span></span></div></div>
-  <div class="txt">
-    <span class="eb">About OKOMAENG</span><h2 class="t">오코맹이 다른 이유</h2>
-<p><b>감자채 따로 조리</b> — 감자채를 따로 굽거나 튀겨 올려 눅눅해지지 않습니다.</p><p><b>새우 2 · 가리비 2</b> — 한 판에 들어가는 해산물을 숫자로 보여 드립니다.</p><p><b>바다향 소스</b> — 해산물 풍미를 살린 소스로 마무리합니다.</p>    <a class="btn" href="#apply">오픈 알림 받기</a>
+<section class="shop" id="shop">
+  <div class="shop-media">
+    <img class="store-photo" src="assets/store-interior.png" alt="오코맹 매장 내부">
+    <a class="store-map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%EC%8B%9C+%EC%A2%85%EB%A1%9C%EA%B5%AC+%EB%8C%80%EB%AA%85%EA%B8%B8+14" target="_blank" rel="noopener noreferrer" aria-label="Google 지도에서 오코맹 위치 보기">
+      <iframe title="서울시 종로구 대명길 14 지도" src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C+%EC%A2%85%EB%A1%9C%EA%B5%AC+%EB%8C%80%EB%AA%85%EA%B8%B8+14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <span>Google 지도에서 크게 보기</span>
+    </a>
   </div>
+  <div class="box"><span class="eb">Shop</span><h2 class="t">매장 정보</h2><p>서울시 종로구 대명길 14<br>오후 12시 ~ 오후 11시 (break 3 ~ 5)</p><a class="btn" href="#apply">오픈 알림 받기</a></div>
 </section>
 
-<section class="news in">
+
+
+<section class="news in" id="news">
   <div class="head"><div><span class="eb">News</span><h2 class="t">오픈 소식</h2></div><span class="more">소식 전체 →</span></div>
   <ul>
     <li><time>[[2026.11.]]</time><span class="tg">오픈</span><b>혜화점 오픈 날짜 안내</b><span class="circ">›</span></li>
@@ -168,16 +172,6 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
   </ul>
 </section>
 
-<section class="svc">
-  <div class="in">
-    <span class="eb">Service</span><h2 class="t">이용 방법</h2>
-    <div class="grid">
-      <a href="#apply"><div class="img"><div class="ph "><span>매장 식사</span></div></div>매장 식사<span class="circ">›</span></a>
-      <a href="#apply"><div class="img"><div class="ph "><span>포장</span></div></div>포장<span class="circ">›</span></a>
-      <a href="#apply"><div class="img"><div class="ph "><span>오픈 알림</span></div></div>오픈 알림<span class="circ">›</span></a>
-    </div>
-  </div>
-</section>
 
 <section class="apply in" id="apply">
   <div class="wrap">
@@ -194,8 +188,8 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 </main>
 
 <footer class="ft"><div class="in">
-  <nav><a href="./">TOP</a><a href="#menu">메뉴</a><a href="#apply">오픈 알림</a><a href="#" data-privacy-open>개인정보 처리 안내</a></nav>
-  <div class="big"><a href="#menu">메뉴<span class="circ">›</span></a><a href="#apply">매장 정보<span class="circ">›</span></a><a href="#apply">오픈 소식<span class="circ">›</span></a></div>
+  <nav><a href="./">TOP</a><a href="#recommend">추천 메뉴</a><a href="#shop">매장 정보</a><a href="#news">오픈 소식</a><a href="#apply">오픈 알림</a><a href="#" data-privacy-open>개인정보 처리 안내</a></nav>
+  <div class="big"><a href="#recommend">추천 메뉴<span class="circ">›</span></a><a href="#shop">매장 정보<span class="circ">›</span></a><a href="#news">오픈 소식<span class="circ">›</span></a></div>
   <p>이 페이지는 수업 실습용 페이지입니다. 실제 판매·결제는 이루어지지 않으며, 표기된 수치·후기는 예시입니다.</p>
 </div></footer>
 <div class="modal" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" aria-hidden="true">
