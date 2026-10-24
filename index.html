@@ -45,7 +45,9 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 .bnr small{font-size:12.6px}
 /* 추천 메뉴 */
 .rec{background:var(--gray1);padding:90px 0 70px}
-.slide{position:relative;background:#fff;display:grid;grid-template-columns:400px 1fr;gap:30px;padding:30px;margin:0 60px}
+.menu-carousel{position:relative;margin:0 60px}
+.slide{position:relative;background:#fff;display:grid;grid-template-columns:400px 1fr;gap:30px;padding:30px;margin:0}
+.menu-slide[hidden]{display:none}
 .slide .img{height:300px}
 .slide .menu-photo{display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#665b50 0,#3b3733 45%,#211f1d 100%)}
 .slide .menu-photo img{width:90%;height:90%;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(0,0,0,.42))}
@@ -53,10 +55,11 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 .slide dl{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;margin:0 0 16px;font-size:12.6px}
 .slide dt{background:var(--gray2);padding:0 10px}
 .slide dd{margin:0}
-.arr{position:absolute;top:50%;transform:translateY(-50%);font-size:28px;color:var(--pt)}
+.arr{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:transparent;font:inherit;font-size:34px;color:var(--pt);cursor:pointer}
 .arr.l{left:-46px}.arr.r{right:-46px}
 .dots{display:flex;gap:10px;justify-content:center;margin-top:24px}
-.dots i{width:6px;height:6px;border-radius:50%;background:#C9C1C1}.dots i:first-child{background:var(--pt)}
+.dots button{width:10px;height:10px;padding:0;border:0;border-radius:50%;background:#C9C1C1;cursor:pointer}
+.dots button.is-active{background:var(--pt)}
 /* 사진 위 흰 상자 */
 .shop{position:relative;min-height:650px;background:#1f1c1a;overflow:hidden}
 .shop-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,32%);min-height:650px}
@@ -108,7 +111,7 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 @media (max-width:860px){
   .mv{height:620px}.hero-slide{object-position:center center}.mv .logo{left:20px;top:30px;font-size:40px}.mv .catch{left:20px;right:20px;bottom:130px}.mv .catch h1{font-size:26px}
   h2.t{font-size:26px}
-  .slide{grid-template-columns:1fr;margin:0;padding:18px}.slide .img{height:200px}.arr{display:none}
+  .menu-carousel{margin:0 28px}.slide{grid-template-columns:1fr;padding:18px}.slide .img{height:200px}.arr{display:block;width:34px;height:48px;background:rgba(255,255,255,.9);border-radius:20px}.arr.l{left:-25px}.arr.r{right:-25px}
   .shop,.shop-media{min-height:0}.shop-media{grid-template-columns:1fr}.store-photo{min-height:360px;height:52vw}.store-map{min-height:260px;border-left:0;border-top:8px solid #fff}.store-map iframe{min-height:260px;height:260px}
   .shop .box{position:relative;left:auto;top:auto;margin:-44px 16px 28px;width:auto;padding:30px;box-shadow:0 12px 30px rgba(0,0,0,.2)}
   .news li{flex-wrap:wrap;gap:8px}
@@ -137,16 +140,32 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 <section class="rec" id="recommend">
   <div class="in">
     <span class="eb">Recommend</span><h2 class="t">추천 · 대표 메뉴</h2>
-    <div class="slide">
-      <div class="img menu-photo"><img src="assets/seafood-okonomiyaki.png" alt="감자채 해물 오코노미야끼"></div>
-      <div>
-        <h3>감자채 해물 오코노미야끼</h3>
-        <dl><dt>판매</dt><dd>오픈일부터</dd><dt>매장</dt><dd>혜화점</dd><dt>가격</dt><dd>18,000원</dd></dl>
-        <p>감자채를 따로 구워 올려 첫입부터 바삭합니다. 바다향이 진한 소스까지.</p>
-      </div>
-      <span class="arr l" aria-hidden="true">‹</span><span class="arr r" aria-hidden="true">›</span>
+    <div class="menu-carousel" data-menu-carousel>
+      <article class="slide menu-slide">
+        <div class="img menu-photo"><img src="assets/seafood-okonomiyaki.png" alt="감자채 해물 오코노미야끼"></div>
+        <div><h3>감자채 해물 오코노미야끼</h3><dl><dt>판매</dt><dd>오픈일부터</dd><dt>매장</dt><dd>혜화점</dd><dt>가격</dt><dd>18,000원</dd></dl><p>감자채를 따로 구워 올려 첫입부터 바삭합니다. 바다향이 진한 소스까지.</p></div>
+      </article>
+      <article class="slide menu-slide" hidden>
+        <div class="img menu-photo"><img src="assets/osaka-okonomiyaki.jpg" alt="오사카식 오코노미야끼"></div>
+        <div><h3>오사카식 오코노미야끼</h3><dl><dt>판매</dt><dd>오픈일부터</dd><dt>매장</dt><dd>혜화점</dd><dt>가격</dt><dd>16,000원</dd></dl><p>가쓰오부시와 소스를 풍성하게 올린 오사카식 오코노미야끼입니다.</p></div>
+      </article>
+      <article class="slide menu-slide" hidden>
+        <div class="img menu-photo"><img src="assets/beef-yakisoba.jpg" alt="소고기 야끼소바"></div>
+        <div><h3>소고기 야끼소바</h3><dl><dt>판매</dt><dd>오픈일부터</dd><dt>매장</dt><dd>혜화점</dd><dt>가격</dt><dd>15,000원</dd></dl><p>고소한 소고기와 채소를 함께 볶아낸 야끼소바입니다.</p></div>
+      </article>
+      <article class="slide menu-slide" hidden>
+        <div class="img menu-photo"><img src="assets/seafood-yakisoba.jpg" alt="해물 야끼소바"></div>
+        <div><h3>해물 야끼소바</h3><dl><dt>판매</dt><dd>오픈일부터</dd><dt>매장</dt><dd>혜화점</dd><dt>가격</dt><dd>14,000원</dd></dl><p>새우와 오징어 등 해산물을 풍성하게 볶아낸 야끼소바입니다.</p></div>
+      </article>
+      <button class="arr l" type="button" data-menu-prev aria-label="이전 메뉴">‹</button>
+      <button class="arr r" type="button" data-menu-next aria-label="다음 메뉴">›</button>
     </div>
-    <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="dots" aria-label="추천 메뉴 선택">
+      <button class="is-active" type="button" data-menu-dot aria-label="감자채 해물 오코노미야끼 보기" aria-current="true"></button>
+      <button type="button" data-menu-dot aria-label="오사카식 오코노미야끼 보기"></button>
+      <button type="button" data-menu-dot aria-label="소고기 야끼소바 보기"></button>
+      <button type="button" data-menu-dot aria-label="해물 야끼소바 보기"></button>
+    </div>
   </div>
 </section>
 
@@ -207,6 +226,6 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
       <button type="button" class="ok" id="privacy-ok" disabled>확인했습니다</button>
     </div>
   </div>
-</div><script src="assets/privacy.js?v=2"></script>
+</div><script src="assets/privacy.js?v=3"></script>
 </body>
 </html>
