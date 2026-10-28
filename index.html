@@ -119,13 +119,20 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 }
 @media (prefers-reduced-motion:reduce){.hero-slide{transition-duration:.15s}}
 </style>
-<!-- GA4 (Day 34에 여기에 붙이기) -->
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W8Z2RFZ67V"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());
+gtag('config','G-W8Z2RFZ67V');
+</script>
 <!-- Meta Pixel (Day 35에 여기에 붙이기) -->
 <!-- Microsoft Clarity (Day 38에 여기에 붙이기) -->
 <!-- Schema JSON-LD (Day 29) -->
 </head>
 <body>
-<a class="menu-btn" href="#apply" id="cta-top">≡ 오픈 알림</a>
+<a class="menu-btn" href="#apply" id="cta-top" data-track="cta_click" data-location="fixed_header" data-destination="apply">≡ 오픈 알림</a>
 <main>
 <section class="mv" aria-label="오코맹 대표 이미지">
   <div class="hero-slider" data-hero-slider>
@@ -134,7 +141,7 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
   </div>
   <div class="logo">오코맹<br><small>OKOMAENG · HYEHWA</small></div>
   <div class="catch"><h1>바삭한 바다 한 판을 바란 건,<br>당신 잘못이 아니에요.</h1><p>부드럽기만 할 거라는 예상, 싹 틀렸습니다. 감자채를 따로 구워 첫입의 바삭함을 더했어요.</p></div>
-  <a class="bnr" href="#apply" id="cta-main"><i class="brand-image"><img src="assets/okomaeng-brand.png" alt="오코맹 브랜드 로고"></i><span><small>오픈 소식 먼저 받기</small><b>오픈 알림 받기</b></span></a>
+  <a class="bnr" href="#apply" id="cta-main" data-track="cta_click" data-location="hero" data-destination="apply"><i class="brand-image"><img src="assets/okomaeng-brand.png" alt="오코맹 브랜드 로고"></i><span><small>오픈 소식 먼저 받기</small><b>오픈 알림 받기</b></span></a>
 </section>
 
 <section class="rec" id="recommend">
@@ -172,12 +179,12 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 <section class="shop" id="shop">
   <div class="shop-media">
     <img class="store-photo" src="assets/store-interior.png" alt="오코맹 매장 내부">
-    <a class="store-map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%EC%8B%9C+%EC%A2%85%EB%A1%9C%EA%B5%AC+%EB%8C%80%EB%AA%85%EA%B8%B8+14" target="_blank" rel="noopener noreferrer" aria-label="Google 지도에서 오코맹 위치 보기">
+    <a class="store-map" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%EC%8B%9C+%EC%A2%85%EB%A1%9C%EA%B5%AC+%EB%8C%80%EB%AA%85%EA%B8%B8+14" target="_blank" rel="noopener noreferrer" aria-label="Google 지도에서 오코맹 위치 보기" data-track="click_map" data-location="shop" data-destination="external_map">
       <iframe title="서울시 종로구 대명길 14 지도" src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C+%EC%A2%85%EB%A1%9C%EA%B5%AC+%EB%8C%80%EB%AA%85%EA%B8%B8+14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <span>Google 지도에서 크게 보기</span>
     </a>
   </div>
-  <div class="box"><span class="eb">Shop</span><h2 class="t">매장 정보</h2><p>서울시 종로구 대명길 14<br>오후 12시 ~ 오후 11시 (break 3 ~ 5)</p><a class="btn" href="#apply">오픈 알림 받기</a></div>
+  <div class="box"><span class="eb">Shop</span><h2 class="t">매장 정보</h2><p>서울시 종로구 대명길 14<br>오후 12시 ~ 오후 11시 (break 3 ~ 5)</p><a class="btn" href="#apply" data-track="cta_click" data-location="shop" data-destination="apply">오픈 알림 받기</a></div>
 </section>
 
 
@@ -199,7 +206,7 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
       <label class="field"><span>이름</span><input id="f-name" type="text" required maxlength="20" placeholder="홍길동"></label>
 <label class="field"><span>연락처</span><input id="f-contact" type="tel" required pattern="[0-9\- ]{9,14}" placeholder="010-0000-0000"></label>
 
-      <div class="safe-note"><span aria-hidden="true">🔒</span><div>입력한 정보는 <b>어디에도 전송·저장되지 않고</b> 완료 즉시 지워집니다. <button type="button" data-privacy-open>자세히 보기</button></div></div>
+      <div class="safe-note"><span aria-hidden="true">🔒</span><div>입력한 정보는 <b>어디에도 전송·저장되지 않고</b> 완료 즉시 지워집니다. <button type="button" data-privacy-open data-modal-source="form_note">자세히 보기</button></div></div>
       <button class="btn" type="submit" id="cta-submit">오픈 알림 받기</button>
     </form>
   </div>
@@ -207,8 +214,8 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
 </main>
 
 <footer class="ft"><div class="in">
-  <nav><a href="./">TOP</a><a href="#recommend">추천 메뉴</a><a href="#shop">매장 정보</a><a href="#news">오픈 소식</a><a href="#apply">오픈 알림</a><a href="#" data-privacy-open>개인정보 처리 안내</a></nav>
-  <div class="big"><a href="#recommend">추천 메뉴<span class="circ">›</span></a><a href="#shop">매장 정보<span class="circ">›</span></a><a href="#news">오픈 소식<span class="circ">›</span></a></div>
+  <nav><a href="./" data-track="navigation_click" data-location="footer_nav" data-destination="top">TOP</a><a href="#recommend" data-track="navigation_click" data-location="footer_nav" data-destination="recommend">추천 메뉴</a><a href="#shop" data-track="navigation_click" data-location="footer_nav" data-destination="shop">매장 정보</a><a href="#news" data-track="navigation_click" data-location="footer_nav" data-destination="news">오픈 소식</a><a href="#apply" data-track="navigation_click" data-location="footer_nav" data-destination="apply">오픈 알림</a><a href="#" data-privacy-open data-modal-source="footer">개인정보 처리 안내</a></nav>
+  <div class="big"><a href="#recommend" data-track="navigation_click" data-location="footer_featured" data-destination="recommend">추천 메뉴<span class="circ">›</span></a><a href="#shop" data-track="navigation_click" data-location="footer_featured" data-destination="shop">매장 정보<span class="circ">›</span></a><a href="#news" data-track="navigation_click" data-location="footer_featured" data-destination="news">오픈 소식<span class="circ">›</span></a></div>
   <p>이 페이지는 수업 실습용 페이지입니다. 실제 판매·결제는 이루어지지 않으며, 표기된 수치·후기는 예시입니다.</p>
 </div></footer>
 <div class="modal" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title" aria-hidden="true">
@@ -219,6 +226,7 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
       <li><strong>입력하신 정보는 절대 저장하지 않습니다.</strong> 서버, 데이터베이스, 스프레드시트, 이메일, 외부 서비스 어디로도 전송되지 않습니다.</li>
       <li>입력값은 이 브라우저 화면에만 잠시 머물며, 완료 버튼을 누르는 <strong>즉시 화면에서 지워집니다.</strong> 쿠키나 브라우저 저장소에도 남기지 않습니다.</li>
       <li>페이지 제작자와 강사를 포함한 <strong>누구도 입력값을 볼 수 없습니다.</strong></li>
+      <li>서비스 개선을 위해 Google Analytics로 <strong>익명 방문·버튼 이용 통계</strong>를 집계합니다. 이름과 연락처 입력값은 분석 도구로 전송하지 않습니다.</li>
     </ol>
     <label><input type="checkbox" id="privacy-agree"> 위 내용을 확인했으며, 입력값이 저장되지 않고 즉시 파기된다는 점에 동의합니다.</label>
     <div class="modal-actions">
@@ -226,6 +234,6 @@ h2.t{font-size:36px;font-weight:700;margin:4px 0 22px;letter-spacing:.04em;line-
       <button type="button" class="ok" id="privacy-ok" disabled>확인했습니다</button>
     </div>
   </div>
-</div><script src="assets/privacy.js?v=3"></script>
+</div><script src="assets/analytics.js?v=1"></script><script src="assets/privacy.js?v=4"></script>
 </body>
 </html>
