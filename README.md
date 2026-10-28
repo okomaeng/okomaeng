@@ -28,11 +28,12 @@
 - `id="cta-main"`, `id="lead-form"`, `id="cta-submit"`: GA4·픽셀 이벤트가 이 이름을 씁니다.
 - `assets/privacy.js`의 "입력값을 지우고 result.html로 이동" 부분.
 
-## 분석 도구 붙이는 자리
+## 분석 도구
 
-`index.html`과 `result.html`의 `<head>` 안에 주석으로 자리를 만들어 두었습니다.
+Google Analytics 4 측정 ID `G-W8Z2RFZ67V`가 `index.html`과 `result.html`에 설치되어 있습니다. 사용자 행동 이벤트는 `assets/analytics.js`와 `assets/privacy.js`에서 관리합니다.
 
-- `<!-- GA4 -->` Day 34
+폼의 이름·연락처 입력값은 분석 코드에서 읽거나 GA4로 전송하지 않습니다. `generate_lead`는 폼 검증과 개인정보 안내 확인이 끝난 뒤 한 번만 전송합니다.
+
 - `<!-- Meta Pixel -->` Day 35
 - `<!-- Microsoft Clarity -->` Day 38
 - `<!-- Schema JSON-LD -->` Day 29

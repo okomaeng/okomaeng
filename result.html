@@ -19,7 +19,14 @@
 .funnel i{align-self:center;font-style:normal;opacity:.4}
 .wiped{display:inline-block;margin-top:22px;padding:12px 16px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:14px}
 </style>
-<!-- GA4 (Day 34: 이 페이지 조회를 전환으로 잡습니다) -->
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W8Z2RFZ67V"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());
+gtag('config','G-W8Z2RFZ67V');
+</script>
 <!-- Meta Pixel (Day 35) -->
 </head>
 <body>
@@ -37,8 +44,9 @@
   <p style="font-size:13px;opacity:.6;margin-top:6px">방문자가 이 화면까지 오는 과정이 수강생이 설계한 퍼널입니다.</p>
 
   <div style="margin-top:28px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-    <a class="btn" href="./">처음 화면으로</a>
+    <a class="btn" href="./" data-track="navigation_click" data-location="result" data-destination="top">처음 화면으로</a>
   </div>
 </div></main>
+<script src="assets/analytics.js?v=1"></script>
 </body>
 </html>
