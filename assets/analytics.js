@@ -7,6 +7,27 @@
   function track(eventName, params) {
     if (typeof window.gtag !== 'function') return;
     window.gtag('event', eventName, Object.assign({ page_type: pageType }, params || {}));
+    if (window.fbq) {
+      if (eventName === 'page_view' || eventName === 'scroll' || eventName.indexOf('scroll') !== -1) return;
+
+      var metaEventNames = {
+        generate_lead: 'Lead',
+        sign_up: 'CompleteRegistration',
+        contact_click: 'Contact',
+        view_item: 'ViewContent',
+        add_to_cart: 'AddToCart',
+        begin_checkout: 'InitiateCheckout',
+        search: 'Search'
+      };
+
+      if (eventName === 'purchase') {
+        fbq('track', 'Purchase', { value: params && params.value, currency: 'KRW' });
+      } else if (metaEventNames[eventName]) {
+        fbq('track', metaEventNames[eventName]);
+      } else {
+        fbq('trackCustom', eventName);
+      }
+    }
   }
 
   window.okomaengTrack = track;
