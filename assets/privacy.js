@@ -128,7 +128,6 @@
     track('privacy_modal_confirm', { modal_mode: mode, modal_source: modalSource });
     if (mode !== 'submit') { close('confirm'); return; }
     wipe();
-    if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
 
     var navigated = false;
     function finish() {
@@ -144,6 +143,7 @@
         event_callback: finish,
         event_timeout: 900
       });
+      if (window.fbq) fbq('track', 'Lead');
       window.setTimeout(finish, 1000);
     } else {
       finish();
